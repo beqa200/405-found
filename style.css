@@ -1,0 +1,50 @@
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-style: normal;
+}
+
+@import '@fontsource/firago/400.css';
+@import '@fontsource/firago/500.css';
+
+body{
+    height: 100vh;
+    font-family: 'FiraGO', sans-serif;
+}
+
+.header-content{
+    background-color: #FFF;
+    border-bottom: 1px solid #E4E3EB;
+    height:80px;
+    display: flex;
+    width:100%;
+    align-items: center;
+    justify-content: space-between;
+    padding:0px 30px;
+}
+
+.login-button{
+    width:93px;
+    height:40px;
+    background-color: #5D37F3;
+    border-radius: 8px;
+    border-style: none;
+}
+
+#login{
+    padding:10px 20px;
+    color:#FFF;
+    font-weight:500;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+
+
+
+
+
+
