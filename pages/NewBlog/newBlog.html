@@ -14,15 +14,15 @@
     <div class="lineDiv"><br class="line" /></div>
     <main>
       <h1>ბლოგის დამატება</h1>
-      <div class="imageDiv">
-        <p class="uploadPhoto">ატვირთეთ ფოტო</p>
+      <p class="uploadPhoto">ატვირთეთ ფოტო</p>
+      <div class="imageDiv" id="box">
         <div class="upload-image-input-div">
           <img
             src="../../assets/file-add.svg"
             alt="folder-add"
             id="folder-add"
           />
-          <label for="upload-image-input">
+          <label for="upload-image-input" id="selectFileText">
             <p class="choose">
               ჩააგდეთ ფაილი აქ ან <a id="chooseFile">აირჩიეთ ფაილი</a>
             </p>
@@ -33,6 +33,10 @@
             id="upload-image-input"
           />
         </div>
+      </div>
+      <div id="div-for-file">
+        <img src="../../assets/gallery.svg" id="gallery" />
+        <img src="../../assets/remove.svg" id="remove-icon" />
       </div>
       <div class="author-and-title">
         <div class="author">

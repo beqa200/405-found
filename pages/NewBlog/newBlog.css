@@ -15,15 +15,15 @@ h1 {
   line-height: 40px;
 }
 .imageDiv {
-  padding-top: 40px;
+  padding-top: 8px;
   display: flex;
-  gap: 8px;
   flex-direction: column;
 }
 .uploadPhoto {
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
+  padding-top: 40px;
 }
 .upload-image-input-div {
   border-radius: 12px;
@@ -96,6 +96,7 @@ h1 {
   width: 600px;
   height: 124px;
   padding: 12px 0 0 16px;
+  white-space: pre-line;
 }
 ::placeholder {
   text-align: start;
@@ -163,4 +164,18 @@ h1 {
   width: 600px;
   display: flex;
   justify-content: end;
+}
+#div-for-file {
+  width: 600px;
+  height: 56px;
+  border-radius: 12px;
+  background: #f2f2fa;
+  margin-top: 8px;
+  gap: 12px;
+  padding: 16px 0 16px 16px;
+  display: none;
+}
+#remove-icon {
+  position: relative;
+  left: 32rem;
 }
