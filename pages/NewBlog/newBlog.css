@@ -8,3 +8,159 @@ header {
   background: #fff;
   display: flex;
 }
+main {
+  padding: 40px 0 110px 360px;
+}
+h1 {
+  line-height: 40px;
+}
+.imageDiv {
+  padding-top: 40px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+.uploadPhoto {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.upload-image-input-div {
+  border-radius: 12px;
+  border: 1px dashed #85858d;
+  background: #f4f3ff;
+  display: flex;
+  align-items: center;
+  padding: 48px;
+  gap: 24px;
+  flex-direction: column;
+  width: 600px;
+}
+#folder-add {
+  width: 40px;
+  height: 40px;
+}
+#chooseFile {
+  text-decoration: underline;
+}
+.choose {
+  color: #1a1a1f;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+#upload-image-input {
+  display: none;
+}
+.author {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#author-name-input,
+#title-input {
+  border-radius: 12px;
+  border: 1px solid #e4e3eb;
+  background: #fcfcfd;
+  width: 288px;
+  height: 44px;
+  flex-shrink: 0;
+}
+#list {
+  margin-left: 20px;
+  color: #85858d;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.author-and-title {
+  display: flex;
+  gap: 24px;
+  padding-top: 24px;
+}
+.title-div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.describe-div {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  gap: 8px;
+}
+#describe-input {
+  border-radius: 12px;
+  border: 1px solid #e4e3eb;
+  background: #fcfcfd;
+  width: 600px;
+  height: 124px;
+  padding: 12px 0 0 16px;
+}
+::placeholder {
+  text-align: start;
+  position: absolute;
+  top: 12px;
+  left: 16px;
+}
+.min-four-character {
+  color: #85858d;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+#date-input,
+#category-select {
+  border-radius: 12px;
+  border: 1px solid #e4e3eb;
+  background: #fcfcfd;
+  width: 288px;
+  height: 44px;
+  padding: 12px 12px 12px 16px;
+}
+.date-category {
+  padding-top: 24px;
+  display: flex;
+  gap: 24px;
+}
+.category,
+.date {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+.email {
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#email-input {
+  border-radius: 12px;
+  border: 1px solid #e4e3eb;
+  background: #fcfcfd;
+  width: 288px;
+  height: 44px;
+}
+#submit {
+  display: flex;
+  width: 288px;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: #e4e3eb;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 40px;
+}
+.submit-btn {
+  width: 600px;
+  display: flex;
+  justify-content: end;
+}
