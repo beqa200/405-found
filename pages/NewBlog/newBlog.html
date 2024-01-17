@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en,ka">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +8,87 @@
     <title>Document</title>
   </head>
   <body>
+    <header>
+      <img src="../../assets/LOGO-02 3.jpg" alt="Title" />
+    </header>
+    <div class="lineDiv"><br class="line" /></div>
+    <main>
+      <h1>ბლოგის დამატება</h1>
+      <div class="imageDiv">
+        <p class="uploadPhoto">ატვირთეთ ფოტო</p>
+        <div class="upload-image-input-div">
+          <img
+            src="../../assets/file-add.svg"
+            alt="folder-add"
+            id="folder-add"
+          />
+          <label for="upload-image-input">
+            <p class="choose">
+              ჩააგდეთ ფაილი აქ ან <a id="chooseFile">აირჩიეთ ფაილი</a>
+            </p>
+          </label>
+          <input
+            type="file"
+            name="upload-image-input"
+            id="upload-image-input"
+          />
+        </div>
+      </div>
+      <div class="author-and-title">
+        <div class="author">
+          <span id="author">ავტორი *</span>
+          <input
+            type="text"
+            id="author-name-input"
+            placeholder="შეიყვნეთ ავტორი"
+          />
+          <ul id="list">
+            <li>მინიმუმ 4 სიმბოლო</li>
+            <li>მინიმუმ ორი სიტყვა</li>
+            <li>მხოლოდ ქართული სიმბოლოები</li>
+          </ul>
+        </div>
+        <div class="title-div">
+          <span id="author">სათური *</span>
+          <input type="text" id="title-input" placeholder="შეიყვნეთ სათაური" />
+          <ul id="list">
+            <span id="least-4">მინიმუმ 4 სიმბოლო</span>
+          </ul>
+        </div>
+      </div>
+      <div class="describe-div">
+        <p class="describe-p">აღწერა *</p>
+        <input
+          type="text"
+          id="describe-input"
+          placeholder="შეიყვნანეთ აღწერა"
+        />
+        <p class="min-four-character">მინიმუმ 4 სიმბოლო</p>
+      </div>
+      <div class="date-category">
+        <div class="date">
+          <p class="date-p">გამოქვეყნების თარიღი *</p>
+          <input type="date" id="date-input" />
+        </div>
+        <div class="category">
+          <p class="category-p">კატეგორია *</p>
+          <select name="" id="category-select">
+            <option value="" disabled selected>აირჩიეთ კატეგორია</option>
+          </select>
+        </div>
+      </div>
+      <div class="email">
+        <p class="email-p">ელ-ფოსტა</p>
+        <input
+          type="email"
+          id="email-input"
+          placeholder="Example@redberry.ge"
+        />
+      </div>
+      <div class="submit-btn">
+        <button id="submit">გამოქვეყნება</button>
+      </div>
+    </main>
     <script src="./newBlog.js"></script>
   </body>
 </html>
