@@ -59,9 +59,10 @@ h1{
 
 .title{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin-top:60px;
+    margin:60px auto auto auto;
+    width:1300px;
 }
 
 .ბლოგი{
@@ -147,6 +148,87 @@ h1{
     border-style: none;
 }
 
+.card1,.card2,.card3{
+    
+    width:408px;
+    height:620px;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+    width:1300px;
+    margin: 60px auto auto auto;
+}
+
+.container div img{
+    border-radius: 12px;
+}
+
+h3{
+    color:#1A1A1F;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    width:164px;
+    height:20px;
+    padding-top: 10px;
+}
+
+h6{
+    color:#85858D;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    width:52px;
+    height:16px;
+    padding-top: 15px;;
+}
+
+h2{
+    color:#1A1A1F;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    width:408px;
+    height:56px;
+    padding-top: 30px;
+}
+.card-buttons div{
+    height:28px;
+    width:354px;
+}
+
+.card-buttons{
+    margin-top: 40px;
+}
+
+p{
+    color:#404049;
+    width:408px;
+    height:56px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    padding-top: 10px;
+}
+
+h4{
+    color:#5D37F3;
+    line-height: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    width:103px;
+    height:20px;
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+#icon{
+    margin-left: 110px;
+    display: inline-block;
+}
 
 
 
