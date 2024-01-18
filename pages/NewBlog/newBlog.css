@@ -65,6 +65,11 @@ h1 {
   width: 288px;
   height: 44px;
   flex-shrink: 0;
+  color: #1a1a1f;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 12px 12px 12px 16px;
 }
 #list {
   margin-left: 20px;
@@ -144,6 +149,13 @@ h1 {
   background: #fcfcfd;
   width: 288px;
   height: 44px;
+  color: #1a1a1f;
+  font-family: FiraGO;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 12px 12px 12px 16px;
 }
 #submit {
   display: flex;
@@ -180,4 +192,18 @@ h1 {
   position: relative;
   left: 32rem;
 }
-
+#email-error-msg {
+  gap: 8px;
+  width: 288px;
+  display: flex;
+  display: none;
+}
+.error-msg {
+  color: #ea1919;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+}
+#info-circle {
+  margin-top: -17px;
+}

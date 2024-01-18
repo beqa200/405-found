@@ -62,13 +62,7 @@
       </div>
       <div class="describe-div">
         <p class="describe-p">აღწერა *</p>
-        <textarea
-          placeholder="შეიყვნანეთ აღწერა"
-          name="describe"
-          id="describe"
-          cols="50"
-          rows="10"
-        >
+        <textarea name="describe" id="describe" placeholder="შეიყვნანეთ აღწერა">
         </textarea>
         <p id="min-four-character">მინიმუმ 4 სიმბოლო</p>
       </div>
@@ -91,6 +85,10 @@
           id="email-input"
           placeholder="Example@redberry.ge"
         />
+        <div id="email-error-msg">
+          <img src="../../assets/info-circle.svg" id="info-circle" />
+          <p class="error-msg">მეილი უნდა მთავრდებოდეს @redberry.ge-ით</p>
+        </div>
       </div>
       <div class="submit-btn">
         <button id="submit">გამოქვეყნება</button>

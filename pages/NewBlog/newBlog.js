@@ -10,8 +10,10 @@ const fourth = document.getElementById("least-4");
 const titleInput = document.getElementById("title-input");
 const describe = document.getElementById("describe");
 const errorMsgTxtArea = document.getElementById("min-four-character");
+const emailInput = document.getElementById("email-input");
+const errorMsgEmail = document.getElementById("email-error-msg");
 
-console.log(errorMsgTxtArea);
+console.log(errorMsgEmail);
 
 //  image upload functionality
 
@@ -37,10 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
     box.style.display = "none";
   });
 
-  selectFileText.addEventListener("click", function () {
-    fileInput.click();
-  });
-
   fileInput.addEventListener("change", function () {
     imagesLinkDiv.style.display = "flex";
     imagesLinkDiv.innerHTML += fileInput.files[0].name;
@@ -54,14 +52,16 @@ function checkWhitespace() {
   return /\s/.test(authorInput.value);
 }
 authorInput.addEventListener("input", function () {
-  for (let i = 0; i < authorInput.value.length; i++) {
+  const inputWithoutSpaces = authorInput.value.replace(/\s/g, "");
+
+  for (let i = 0; i < inputWithoutSpaces.length; i++) {
     if (i <= 4) {
       first.style.color = "#EA1919";
     } else {
       first.style.color = "";
     }
   }
-  if (!checkWhitespace() && authorInput.value.trim() !== "") {
+  if (authorInput.value.trim().split(" ").length < 2) {
     second.style.color = "#EA1919";
   } else {
     second.style.color = "";
@@ -90,5 +90,18 @@ describe.addEventListener("input", () => {
     errorMsgTxtArea.style.color = "#EA1919";
   } else {
     errorMsgTxtArea.style.color = "#85858d";
+  }
+});
+
+//email validation 
+
+emailInput.addEventListener("input", () => {
+  const emailRegex = /^[^\s@]+@redberry\.ge$/;
+  if (emailRegex.test(emailInput.value)) {
+    emailInput.style.border = "1px solid #14D81C";
+    errorMsgEmail.style.display = "none";
+  } else {
+    errorMsgEmail.style.display = "flex";
+    emailInput.style.border = "";
   }
 });
