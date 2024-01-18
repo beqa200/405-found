@@ -14,15 +14,15 @@
     <div class="lineDiv"><br class="line" /></div>
     <main>
       <h1>ბლოგის დამატება</h1>
-      <div class="imageDiv">
-        <p class="uploadPhoto">ატვირთეთ ფოტო</p>
+      <p class="uploadPhoto">ატვირთეთ ფოტო</p>
+      <div class="imageDiv" id="box">
         <div class="upload-image-input-div">
           <img
             src="../../assets/file-add.svg"
             alt="folder-add"
             id="folder-add"
           />
-          <label for="upload-image-input">
+          <label for="upload-image-input" id="selectFileText">
             <p class="choose">
               ჩააგდეთ ფაილი აქ ან <a id="chooseFile">აირჩიეთ ფაილი</a>
             </p>
@@ -34,6 +34,10 @@
           />
         </div>
       </div>
+      <div id="div-for-file">
+        <img src="../../assets/gallery.svg" id="gallery" />
+        <img src="../../assets/remove.svg" id="remove-icon" />
+      </div>
       <div class="author-and-title">
         <div class="author">
           <span id="author">ავტორი *</span>
@@ -43,9 +47,9 @@
             placeholder="შეიყვნეთ ავტორი"
           />
           <ul id="list">
-            <li>მინიმუმ 4 სიმბოლო</li>
-            <li>მინიმუმ ორი სიტყვა</li>
-            <li>მხოლოდ ქართული სიმბოლოები</li>
+            <li id="first">მინიმუმ 4 სიმბოლო</li>
+            <li id="second">მინიმუმ ორი სიტყვა</li>
+            <li id="third">მხოლოდ ქართული სიმბოლოები</li>
           </ul>
         </div>
         <div class="title-div">
@@ -58,12 +62,15 @@
       </div>
       <div class="describe-div">
         <p class="describe-p">აღწერა *</p>
-        <input
-          type="text"
-          id="describe-input"
+        <textarea
           placeholder="შეიყვნანეთ აღწერა"
-        />
-        <p class="min-four-character">მინიმუმ 4 სიმბოლო</p>
+          name="describe"
+          id="describe"
+          cols="50"
+          rows="10"
+        >
+        </textarea>
+        <p id="min-four-character">მინიმუმ 4 სიმბოლო</p>
       </div>
       <div class="date-category">
         <div class="date">
