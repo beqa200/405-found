@@ -89,16 +89,17 @@ h1 {
   padding-top: 24px;
   gap: 8px;
 }
-#describe-input {
+#describe {
   border-radius: 12px;
   border: 1px solid #e4e3eb;
   background: #fcfcfd;
   width: 600px;
   height: 124px;
   padding: 12px 0 0 16px;
-  white-space: pre-line;
+  resize: none;
+  font-size: 14px;
 }
-::placeholder {
+#describe::placeholder {
   text-align: start;
   position: absolute;
   top: 12px;
@@ -179,3 +180,4 @@ h1 {
   position: relative;
   left: 32rem;
 }
+

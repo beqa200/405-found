@@ -8,8 +8,10 @@ const second = document.getElementById("second");
 const third = document.getElementById("third");
 const fourth = document.getElementById("least-4");
 const titleInput = document.getElementById("title-input");
+const describe = document.getElementById("describe");
+const errorMsgTxtArea = document.getElementById("min-four-character");
 
-console.log(first);
+console.log(errorMsgTxtArea);
 
 //  image upload functionality
 
@@ -73,12 +75,20 @@ authorInput.addEventListener("input", function () {
   }
 });
 
-titleInput.addEventListener("input", function ass() {
+titleInput.addEventListener("input", function () {
   for (let i = 0; i < titleInput.value.length; i++) {
     if (i <= 4) {
       fourth.style.color = "#EA1919";
     } else {
       fourth.style.color = "";
     }
+  }
+});
+
+describe.addEventListener("input", () => {
+  if (describe.value.length < 4) {
+    errorMsgTxtArea.style.color = "#EA1919";
+  } else {
+    errorMsgTxtArea.style.color = "#85858d";
   }
 });
