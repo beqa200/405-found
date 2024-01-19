@@ -43,9 +43,16 @@ function foo() {
       let files = e.dataTransfer.files;
       console.log(files);
       imagesLinkDiv.style.display = "flex";
-      isValid = true;
+      isValidPhoto = true;
       imagesLinkDiv.innerHTML += files[0].name;
       box.style.display = "none";
+      removeIcon.addEventListener("click", function () {
+        fileInput.value = "";
+        isValidPhoto = false;
+        imagesLinkDiv.style.display = "none";
+        box.style.display = "flex";
+        updateSubmitButtonColor();
+      });
     });
 
     fileInput.addEventListener("change", function () {
@@ -110,7 +117,9 @@ authorInput.addEventListener("input", function () {
 });
 
 titleInput.addEventListener("input", function () {
-  if (titleInput.value.length < 4) {
+  const inputWithoutSpacesTitle = titleInput.value.replace(/\s/g, "");
+
+  if (inputWithoutSpacesTitle.length < 4) {
     fourth.style.color = "#EA1919";
     titleInput.style.border = "";
     isValidTitle = false;
@@ -226,14 +235,14 @@ function updateSubmitButtonColor() {
     isValidTitle &&
     isValidDescr &&
     isValidCategory &&
-    isValidDate &&  
+    isValidDate &&
     isValidPhoto &&
     isValidMail
   ) {
     submit.style.backgroundColor = "#4721DD";
     submit.style.cursor = "pointer";
   } else {
-    submit.style.backgroundColor = ""; 
+    submit.style.backgroundColor = "";
   }
   console.log(isValidDate, isValidCategory);
 }
