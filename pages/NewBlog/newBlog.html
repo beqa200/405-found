@@ -62,20 +62,29 @@
       </div>
       <div class="describe-div">
         <p class="describe-p">აღწერა *</p>
-        <textarea name="describe" id="describe" placeholder="შეიყვნანეთ აღწერა">
-        </textarea>
+        <textarea
+          name="describe"
+          id="describe"
+          placeholder="შეიყვნანეთ აღწერა"
+        ></textarea>
         <p id="min-four-character">მინიმუმ 4 სიმბოლო</p>
       </div>
       <div class="date-category">
         <div class="date">
           <p class="date-p">გამოქვეყნების თარიღი *</p>
-          <input type="date" id="date-input" />
+          <input type="date" id="date-input" required />
         </div>
         <div class="category">
           <p class="category-p">კატეგორია *</p>
-          <select name="" id="category-select">
-            <option value="" disabled selected>აირჩიეთ კატეგორია</option>
-          </select>
+
+          <div id="toggleButton" onclick="toggleDiv()">
+            <img src="../../assets/arrow-down.svg" id="arrow-down" />
+          </div>
+
+          <div id="bottomDiv">
+            <!-- Content of the bottom div goes here -->
+            <div id="categoryButtonsContainer"></div>
+          </div>
         </div>
       </div>
       <div class="email">
@@ -94,6 +103,7 @@
         <button id="submit">გამოქვეყნება</button>
       </div>
     </main>
+
     <script src="./newBlog.js"></script>
   </body>
 </html>
