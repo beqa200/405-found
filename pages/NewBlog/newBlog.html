@@ -63,25 +63,28 @@
       <div class="describe-div">
         <p class="describe-p">აღწერა *</p>
         <textarea
-          placeholder="შეიყვნანეთ აღწერა"
           name="describe"
           id="describe"
-          cols="50"
-          rows="10"
-        >
-        </textarea>
+          placeholder="შეიყვნანეთ აღწერა"
+        ></textarea>
         <p id="min-four-character">მინიმუმ 4 სიმბოლო</p>
       </div>
       <div class="date-category">
         <div class="date">
           <p class="date-p">გამოქვეყნების თარიღი *</p>
-          <input type="date" id="date-input" />
+          <input type="date" id="date-input" required />
         </div>
         <div class="category">
           <p class="category-p">კატეგორია *</p>
-          <select name="" id="category-select">
-            <option value="" disabled selected>აირჩიეთ კატეგორია</option>
-          </select>
+
+          <div id="toggleButton" onclick="toggleDiv()">
+            <img src="../../assets/arrow-down.svg" id="arrow-down" />
+          </div>
+
+          <div id="bottomDiv">
+            <!-- Content of the bottom div goes here -->
+            <div id="categoryButtonsContainer"></div>
+          </div>
         </div>
       </div>
       <div class="email">
@@ -91,11 +94,16 @@
           id="email-input"
           placeholder="Example@redberry.ge"
         />
+        <div id="email-error-msg">
+          <img src="../../assets/info-circle.svg" id="info-circle" />
+          <p class="error-msg">მეილი უნდა მთავრდებოდეს @redberry.ge-ით</p>
+        </div>
       </div>
       <div class="submit-btn">
         <button id="submit">გამოქვეყნება</button>
       </div>
     </main>
+
     <script src="./newBlog.js"></script>
   </body>
 </html>
