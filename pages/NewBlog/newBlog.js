@@ -23,6 +23,24 @@ let isValidCategory = false;
 let isValidDate = false;
 let isValidPhoto = 0;
 
+//localstorage for inputs
+if (localStorage.getItem("authorName")) {
+  authorInput.value = localStorage.getItem("authorName");
+}
+
+if (localStorage.getItem("title")) {
+  titleInput.value = localStorage.getItem("title");
+}
+if (localStorage.getItem("describe")) {
+  describe.value = localStorage.getItem("describe");
+}
+if (localStorage.getItem("date")) {
+  dateInput.value = localStorage.getItem("date");
+}
+if (localStorage.getItem("email")) {
+  emailInput.value = localStorage.getItem("email");
+}
+
 //  image upload functionality
 function foo() {
   document.addEventListener("DOMContentLoaded", function () {
@@ -82,6 +100,7 @@ function checkWhitespace() {
   return /\s/.test(authorInput.value);
 }
 authorInput.addEventListener("input", function () {
+  localStorage.setItem("authorName", authorInput.value);
   const inputWithoutSpaces = authorInput.value.replace(/\s/g, "");
   if (inputWithoutSpaces.length <= 3) {
     first.style.color = "#EA1919";
@@ -113,12 +132,14 @@ authorInput.addEventListener("input", function () {
     authorInput.style.border = "";
     isValidAuthor = false;
   }
+  localStorage.setItem("authorName", authorInput.value);
+
   updateSubmitButtonColor();
 });
 
 titleInput.addEventListener("input", function () {
+  localStorage.setItem("title", titleInput.value);
   const inputWithoutSpacesTitle = titleInput.value.replace(/\s/g, "");
-
   if (inputWithoutSpacesTitle.length < 4) {
     fourth.style.color = "#EA1919";
     titleInput.style.border = "";
@@ -132,6 +153,7 @@ titleInput.addEventListener("input", function () {
 });
 
 describe.addEventListener("input", () => {
+  localStorage.setItem("describe", describe.value);
   if (describe.value.length < 4) {
     errorMsgTxtArea.style.color = "#EA1919";
     describe.style.border = "";
@@ -143,9 +165,23 @@ describe.addEventListener("input", () => {
   updateSubmitButtonColor();
 });
 
+dateInput.addEventListener("input", () => {
+  localStorage.setItem("date", dateInput.value);
+  if (dateInput.value) {
+    dateInput.style.border = "1px solid #14D81C";
+    isValidDate = true;
+  } else {
+    dateInput.style.border = "";
+    isValidDate = false;
+  }
+  updateSubmitButtonColor();
+});
+
 //email validation
 
 emailInput.addEventListener("input", () => {
+  localStorage.setItem("email", emailInput.value);
+
   const emailRegex = /^[^\s@]+@redberry\.ge$/;
   if (emailRegex.test(emailInput.value)) {
     emailInput.style.border = "1px solid #14D81C";
@@ -158,21 +194,20 @@ emailInput.addEventListener("input", () => {
   }
   updateSubmitButtonColor();
 });
-var categories = ["მარკეტი", "აპლიკაცია", "კვლევა"];
+let categories = ["მარკეტი", "აპლიკაცია", "კვლევა"];
 
 function toggleDiv() {
-  var bottomDiv = document.getElementById("bottomDiv");
-  var categoryButtonsContainer = document.getElementById(
+  let bottomDiv = document.getElementById("bottomDiv");
+  let categoryButtonsContainer = document.getElementById(
     "categoryButtonsContainer"
   );
 
-  // Toggle the display property
   if (bottomDiv.style.display === "none") {
     bottomDiv.style.display = "block";
 
     // Create category buttons
     categories.forEach(function (category) {
-      var button = document.createElement("div");
+      let button = document.createElement("div");
       button.className = "categoryButton";
       button.textContent = category;
       button.onclick = function () {
@@ -184,26 +219,24 @@ function toggleDiv() {
     });
   } else {
     bottomDiv.style.display = "none";
-    // Clear category buttons when hiding the div
     categoryButtonsContainer.innerHTML = "";
   }
 }
 
 function addCategoryToToggle(category) {
-  var toggleButton = document.getElementById("toggleButton");
-  var addedCategory = document.createElement("button");
+  let toggleButton = document.getElementById("toggleButton");
+  let addedCategory = document.createElement("button");
   addedCategory.className = "categoryButton";
   addedCategory.textContent = category;
 
   // Add a delete button to each added category
-  var deleteButton = document.createElement("span");
+  let deleteButton = document.createElement("span");
   deleteButton.innerHTML = "x";
   deleteButton.style.cursor = "pointer";
   deleteButton.onclick = function () {
     toggleButton.removeChild(addedCategory);
   };
 
-  // Append added category and delete button to the toggle button
   addedCategory.appendChild(deleteButton);
   toggleButton.appendChild(addedCategory);
   if (addedCategory.value.length > 1) {
@@ -213,21 +246,15 @@ function addCategoryToToggle(category) {
     toggleButton.style.border = "1px solid #14D81C";
     isValidCategory = true;
   }
+  if (localStorage.getItem("category")) {
+    toggleButton.textContent = localStorage.getItem("category");
+  }
+  toggleButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.setItem("category", toggleButton.textContent);
+  });
   updateSubmitButtonColor();
 }
-
-dateInput.addEventListener("input", () => {
-  console.log(dateInput.value);
-  if (dateInput.value) {
-    dateInput.style.border = "1px solid #14D81C";
-    isValidDate = true;
-  } else {
-    dateInput.style.border = "";
-    isValidDate = false;
-  }
-  updateSubmitButtonColor();
-});
-// console.log(isValidAuthor);
 
 function updateSubmitButtonColor() {
   if (

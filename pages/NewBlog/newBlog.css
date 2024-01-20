@@ -271,3 +271,9 @@ h1 {
 #remove-icon {
   cursor: pointer;
 }
+
+#back {
+  position: relative;
+  top: 40px;
+  left: 76px;
+}
