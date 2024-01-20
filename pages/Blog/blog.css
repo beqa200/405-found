@@ -1,0 +1,105 @@
+main {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-direction: column;
+  padding: 40px 361px;
+}
+.authorinfo {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: #1a1a1f;
+  font-family: FiraGO;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px; /* 125% */
+  width: auto;
+  height: auto;
+  padding-top: 24px;
+}
+.describe {
+  color: #404049;
+  font-family: FiraGO;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 175% */
+}
+p {
+  width: auto;
+  height: auto;
+  padding: 0;
+}
+.buttons {
+  margin-top: 24px;
+}
+#app {
+  border-radius: 30px;
+  background: rgba(28, 214, 125, 0.08);
+  padding: 6px;
+  color: #15c972;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+footer {
+  padding: 98px 189px 300px 189px;
+}
+.posts {
+  color: #1a1a1f;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+}
+.arrows {
+  display: flex;
+  gap: 24px;
+}
+.first-div {
+  display: flex;
+  justify-content: space-between;
+}
+#slideshow {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  gap: 32px;
+}
+
+.author-name- {
+  color: #1a1a1f;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  padding-top: 24px;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+.title- {
+  color: #1a1a1f;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+}
+.buttons-div {
+  display: flex;
+}
+button {
+  display: flex;
+  padding: 6px 10px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 30px;
+  border-radius: 30px;
+  background: rgba(177, 28, 214, 0.08);
+}
