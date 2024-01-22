@@ -1,4 +1,4 @@
-//  Post რექვესთი ბლოგის დასამატებლად
+
 async function postData() {
     const response = await fetch(" https://api.blog.redberryinternship.ge/api/blogs",{
         method: "POST",
@@ -19,3 +19,15 @@ async function postData() {
     await uploadBlog();
 
 }
+
+
+// ბლოგების წამოღება
+async function fetchData(){
+    const response =  await fecth("https://api.blog.redberryinternship.ge/api/blogs");
+    const data = await response.json();
+
+    console.log(data);
+}
+
+fetchData();
+
