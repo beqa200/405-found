@@ -295,3 +295,18 @@ h4 {
   color: #fff;
   cursor: pointer;
 }
+#fullscreen {
+  display: block;
+}
+
+#error {
+  color: #ea1919;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-top: 8px;
+}
+#errorDiv {
+  display: none;
+  align-items: center;
+}

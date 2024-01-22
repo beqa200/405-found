@@ -8,7 +8,28 @@
 
     <title>Document</title>
   </head>
+
   <body>
+    <div id="login">
+      <img src="./assets/remove.svg" alt="" id="closing" />
+      <span class="login-p">შესვლა</span>
+      <div class="login-input-div">
+        <span class="email-1">ელ-ფოსტა</span>
+        <input
+          type="email"
+          id="email-input-1"
+          placeholder="Example@redberry.ge"
+        />
+        <div id="errorDiv">
+          <span id="error">
+            <img src="./assets/info-circle.svg" alt="" />ელ-ფოსტა არ
+            მოიძებნა</span
+          >
+        </div>
+        <button id="login-btn">შესვლა</button>
+      </div>
+    </div>
+    <div id="fullscreen"></div>
     <header>
       <div class="header-content">
         <div>
@@ -105,20 +126,6 @@
         </div>
       </div>
     </main>
-    <div id="login">
-      <img src="./assets/remove.svg" alt="" id="closing" />
-      <span class="login-p">შესვლა</span>
-      <div class="login-input-div">
-        <span class="email-1">ელ-ფოსტა</span>
-        <input
-          type="email"
-          id="email-input-1"
-          placeholder="Example@redberry.ge"
-        />
-        <button id="login-btn">შესვლა</button>
-      </div>
-    </div>
-
     <script src="./script.js"></script>
   </body>
 </html>
