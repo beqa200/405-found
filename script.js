@@ -1,11 +1,17 @@
 const loginButton = document.getElementById("login-button");
+console.log(loginButton.textContent);
 const loginDiv = document.getElementById("login");
 const closing = document.getElementById("closing");
+const closingTwo = document.querySelector(".closing");
 const loginInput = document.getElementById("email-input-1");
 const loginBtn = document.getElementById("login-btn");
 const body = document.getElementsByTagName("body")[0];
 const fullScreen = document.getElementById("fullscreen");
 const errorDiv = document.getElementById("errorDiv");
+const addBlogBtn = document.getElementById("add-blog");
+const successfulAuth = document.getElementById("successful-auth");
+const secondLoginBtn = document.getElementById("second-login-button");
+console.log(closing);
 let token;
 loginInput.addEventListener("input", () => {
   loginInput.value;
@@ -29,12 +35,20 @@ async function fetchData() {
   localStorage.setItem("token", token);
   if (token) {
     loginDiv.style.display = "none";
-    fullScreen.style.display = "none";
+    errorDiv.style.display = "none";
+    successfulAuth.style.display = "flex";
+    addBlogBtn.style.display = "flex";
+    loginButton.style.display = "none";
+    loginButton.replaceChild = addBlogBtn;
   } else {
     errorDiv.style.display = "flex";
   }
 }
 loginBtn.addEventListener("click", () => fetchData());
+secondLoginBtn.addEventListener("click", () => {
+  successfulAuth.style.display = "none";
+  fullScreen.style.display = "none";
+});
 
 loginButton.addEventListener("click", function () {
   loginDiv.style.display = "flex";
@@ -50,37 +64,39 @@ closing.addEventListener("click", () => {
   loginDiv.style.display = "none";
   fullScreen.style.display = "none";
 });
-
+closingTwo.addEventListener("click", () => {
+  successfulAuth.style.display = "none";
+  fullScreen.style.display = "none";
+});
 
 async function postData() {
-    const response = await fetch(" https://api.blog.redberryinternship.ge/api/blogs",{
-        method: "POST",
-        headers:{
-            accept: "application/json",
-            "Content-Type":"application/json",
-        },
-        body: JSON.stringify({
-            email:"tamogagniashvili@redberry.ge",
+  const response = await fetch(
+    " https://api.blog.redberryinternship.ge/api/blogs",
+    {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: "tamogagniashvili@redberry.ge",
+      }),
+    }
+  );
 
-        }),
-    });
-
-    const data = await response.json();
-    console.log(data);
-    let token = data.token;
-    localStorage.setItem("token",token);
-    await uploadBlog();
-
+  const data = await response.json();
+  console.log(data);
+  let token = data.token;
+  localStorage.setItem("token", token);
+  await uploadBlog();
 }
 
+// // ბლოგების წამოღება
+// async function fetchData(){
+//     const response =  await fecth("https://api.blog.redberryinternship.ge/api/blogs");
+//     const data = await response.json();
 
-// ბლოგების წამოღება
-async function fetchData(){
-    const response =  await fecth("https://api.blog.redberryinternship.ge/api/blogs");
-    const data = await response.json();
+//     console.log(data);
+// }
 
-    console.log(data);
-}
-
-fetchData();
-
+// fetchData();

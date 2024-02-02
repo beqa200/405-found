@@ -25,6 +25,7 @@ body {
 }
 
 #login-button {
+  cursor: pointer;
   width: 93px;
   height: 40px;
   background-color: #5d37f3;
@@ -309,4 +310,57 @@ h4 {
 #errorDiv {
   display: none;
   align-items: center;
+}
+#add-blog {
+  cursor: pointer;
+  width: 153px;
+  height: 40px;
+  background-color: #5d37f3;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  display: none;
+}
+#successful-auth {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 0 24px 40px 24px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  width: 480px;
+  height: 272px;
+  flex-direction: column;
+  display: flex;
+  display: none;
+}
+#successful-auth div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 64px;
+  gap: 16px;
+}
+
+#successful-auth button {
+  position: absolute;
+  bottom: 40px;
+  width: 432px;
+  background-color: rgba(93, 55, 243, 1);
+  border-radius: 8px;
+  padding: 10px 24px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+#successful-auth span {
+  font-size: 20px;
+  font-weight: 700;
 }
