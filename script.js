@@ -11,8 +11,15 @@ const errorDiv = document.getElementById("errorDiv");
 const addBlogBtn = document.getElementById("add-blog");
 const successfulAuth = document.getElementById("successful-auth");
 const secondLoginBtn = document.getElementById("second-login-button");
-console.log(closing);
+// console.log(closing);
 let token;
+if (localStorage.getItem("token")) {
+  token = localStorage.getItem("token");
+  foo();
+}
+
+console.log(token);
+
 loginInput.addEventListener("input", () => {
   loginInput.value;
 });
@@ -33,17 +40,25 @@ async function fetchData() {
   token = data.token;
   console.log(token);
   localStorage.setItem("token", token);
-  if (token) {
+  foo();
+  successfulAuth.style.display = "flex";
+}
+function foo() {
+  if (token !== "undefined") {
+    console.log(token);
+
+    // localStorage.setItem("token", token);
     loginDiv.style.display = "none";
     errorDiv.style.display = "none";
-    successfulAuth.style.display = "flex";
     addBlogBtn.style.display = "flex";
     loginButton.style.display = "none";
     loginButton.replaceChild = addBlogBtn;
   } else {
     errorDiv.style.display = "flex";
+    addBlogBtn.replaceChild = loginButton;
   }
 }
+// fetchData();
 loginBtn.addEventListener("click", () => fetchData());
 secondLoginBtn.addEventListener("click", () => {
   successfulAuth.style.display = "none";
@@ -69,27 +84,27 @@ closingTwo.addEventListener("click", () => {
   fullScreen.style.display = "none";
 });
 
-async function postData() {
-  const response = await fetch(
-    " https://api.blog.redberryinternship.ge/api/blogs",
-    {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: "tamogagniashvili@redberry.ge",
-      }),
-    }
-  );
+// async function postData() {
+//   const response = await fetch(
+//     " https://api.blog.redberryinternship.ge/api/blogs",
+//     {
+//       method: "POST",
+//       headers: {
+//         accept: "application/json",
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         email: "tamogagniashvili@redberry.ge",
+//       }),
+//     }
+//   );
 
-  const data = await response.json();
-  console.log(data);
-  let token = data.token;
-  localStorage.setItem("token", token);
-  await uploadBlog();
-}
+//   const data = await response.json();
+//   console.log(data);
+//   let token = data.token;
+//   localStorage.setItem("token", token);
+//   await uploadBlog();
+// }
 
 // // ბლოგების წამოღება
 // async function fetchData(){
