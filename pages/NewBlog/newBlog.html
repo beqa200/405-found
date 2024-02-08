@@ -8,11 +8,24 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="successfully-added">
+      <img src="../../assets/remove.svg" alt="" id="closing" class="closing" />
+      <div>
+        <img src="../../assets/green-circle.svg" />
+        <span>ჩანაწი წარმატებით დაემატა</span>
+      </div>
+      <button id="second-login-button">მთავარ გვერდზე დაბრუნება</button>
+    </div>
+    <div class="fullscreen"></div>
     <header>
       <img src="../../assets/LOGO-02 3.jpg" alt="Title" />
     </header>
     <div class="lineDiv"><br class="line" /></div>
-    <img src="../../assets/arrow.svg" id="back" />
+    <img
+      src="../../assets/arrow.svg"
+      id="back"
+      onclick="location.href='../.././index.html';"
+    />
     <main>
       <h1>ბლოგის დამატება</h1>
       <p class="uploadPhoto">ატვირთეთ ფოტო</p>
@@ -78,7 +91,7 @@
         <div class="category">
           <p class="category-p">კატეგორია *</p>
 
-          <div id="toggleButton" onclick="toggleDiv()">
+          <div id="toggleButton">
             <img src="../../assets/arrow-down.svg" id="arrow-down" />
           </div>
 

@@ -15,6 +15,9 @@ const errorMsgEmail = document.getElementById("email-error-msg");
 const dateInput = document.getElementById("date-input");
 let removeIcon = document.getElementById("remove-icon");
 const submit = document.getElementById("submit");
+const toggleButton = document.getElementById("toggleButton");
+let arrForBtn = [];
+
 let isValidAuthor = false;
 let isValidTitle = false;
 let isValidMail = false;
@@ -26,19 +29,28 @@ let isValidPhoto = 0;
 //localstorage for inputs
 if (localStorage.getItem("authorName")) {
   authorInput.value = localStorage.getItem("authorName");
+  validateAuthorInputAndStyle();
 }
+console.log(isValidAuthor);
 
 if (localStorage.getItem("title")) {
   titleInput.value = localStorage.getItem("title");
+  validateTitleInputAndStyle();
 }
 if (localStorage.getItem("describe")) {
   describe.value = localStorage.getItem("describe");
+  validateDescribeInputAndStyle();
 }
 if (localStorage.getItem("date")) {
   dateInput.value = localStorage.getItem("date");
+  validateDateInputAndStyle();
 }
 if (localStorage.getItem("email")) {
+  validateEmailInputAndStyle();
   emailInput.value = localStorage.getItem("email");
+}
+if (localStorage.getItem("category")) {
+  toggleButton.innerHTML = localStorage.getItem("category");
 }
 
 //  image upload functionality
@@ -69,15 +81,22 @@ function foo() {
         isValidPhoto = false;
         imagesLinkDiv.style.display = "none";
         box.style.display = "flex";
-        updateSubmitButtonColor();
       });
     });
 
-    fileInput.addEventListener("change", function () {
+    fileInput.addEventListener("change", function (event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      let imageStr;
+      reader.onload = function () {
+        imageStr = reader.result;
+        localStorage.setItem("imageLink", imageStr);
+      };
+      reader.readAsDataURL(file);
       imagesLinkDiv.style.display = "flex";
       isValidPhoto = true;
       console.log(isValidPhoto);
-
+      console.log(fileInput.files);
       imagesLinkDiv.innerHTML += fileInput.files[0].name;
       box.style.display = "none";
       removeIcon = document.getElementById("remove-icon");
@@ -86,7 +105,6 @@ function foo() {
         isValidPhoto = false;
         imagesLinkDiv.style.display = "none";
         box.style.display = "flex";
-        updateSubmitButtonColor();
       });
       updateSubmitButtonColor();
     });
@@ -95,12 +113,7 @@ function foo() {
 foo();
 
 // inputs validation
-
-function checkWhitespace() {
-  return /\s/.test(authorInput.value);
-}
-authorInput.addEventListener("input", function () {
-  localStorage.setItem("authorName", authorInput.value);
+function validateAuthorInputAndStyle() {
   const inputWithoutSpaces = authorInput.value.replace(/\s/g, "");
   if (inputWithoutSpaces.length <= 3) {
     first.style.color = "#EA1919";
@@ -132,13 +145,8 @@ authorInput.addEventListener("input", function () {
     authorInput.style.border = "";
     isValidAuthor = false;
   }
-  localStorage.setItem("authorName", authorInput.value);
-
-  updateSubmitButtonColor();
-});
-
-titleInput.addEventListener("input", function () {
-  localStorage.setItem("title", titleInput.value);
+}
+function validateTitleInputAndStyle() {
   const inputWithoutSpacesTitle = titleInput.value.replace(/\s/g, "");
   if (inputWithoutSpacesTitle.length < 4) {
     fourth.style.color = "#EA1919";
@@ -149,11 +157,9 @@ titleInput.addEventListener("input", function () {
     titleInput.style.border = "1px solid #14D81C";
     isValidTitle = true;
   }
-  updateSubmitButtonColor();
-});
+}
 
-describe.addEventListener("input", () => {
-  localStorage.setItem("describe", describe.value);
+function validateDescribeInputAndStyle() {
   if (describe.value.length < 4) {
     errorMsgTxtArea.style.color = "#EA1919";
     describe.style.border = "";
@@ -162,11 +168,9 @@ describe.addEventListener("input", () => {
     describe.style.border = "1px solid #14D81C";
     isValidDescr = true;
   }
-  updateSubmitButtonColor();
-});
+}
 
-dateInput.addEventListener("input", () => {
-  localStorage.setItem("date", dateInput.value);
+function validateDateInputAndStyle() {
   if (dateInput.value) {
     dateInput.style.border = "1px solid #14D81C";
     isValidDate = true;
@@ -174,14 +178,8 @@ dateInput.addEventListener("input", () => {
     dateInput.style.border = "";
     isValidDate = false;
   }
-  updateSubmitButtonColor();
-});
-
-//email validation
-
-emailInput.addEventListener("input", () => {
-  localStorage.setItem("email", emailInput.value);
-
+}
+function validateEmailInputAndStyle() {
   const emailRegex = /^[^\s@]+@redberry\.ge$/;
   if (emailRegex.test(emailInput.value)) {
     emailInput.style.border = "1px solid #14D81C";
@@ -192,73 +190,40 @@ emailInput.addEventListener("input", () => {
     emailInput.style.border = "";
     isValidMail = false;
   }
+}
+//EventListener for inputs
+authorInput.addEventListener("input", function () {
+  validateAuthorInputAndStyle();
+  localStorage.setItem("authorName", authorInput.value);
   updateSubmitButtonColor();
 });
-let categories = ["მარკეტი", "აპლიკაცია", "კვლევა"];
-
-function toggleDiv() {
-  let bottomDiv = document.getElementById("bottomDiv");
-  let categoryButtonsContainer = document.getElementById(
-    "categoryButtonsContainer"
-  );
-
-  if (bottomDiv.style.display === "none") {
-    bottomDiv.style.display = "block";
-
-    // Create category buttons
-    categories.forEach(function (category) {
-      let button = document.createElement("div");
-      button.className = "categoryButton";
-      button.textContent = category;
-      button.onclick = function () {
-        addCategoryToToggle(category);
-      };
-
-      // Append button to the container
-      categoryButtonsContainer.appendChild(button);
-    });
-  } else {
-    bottomDiv.style.display = "none";
-    categoryButtonsContainer.innerHTML = "";
-  }
-}
-
-function addCategoryToToggle(category) {
-  let toggleButton = document.getElementById("toggleButton");
-  let addedCategory = document.createElement("button");
-  addedCategory.className = "categoryButton";
-  addedCategory.textContent = category;
-
-  // Add a delete button to each added category
-  let deleteButton = document.createElement("span");
-  deleteButton.innerHTML = "x";
-  deleteButton.style.cursor = "pointer";
-  deleteButton.onclick = function () {
-    toggleButton.removeChild(addedCategory);
-  };
-
-  addedCategory.appendChild(deleteButton);
-  toggleButton.appendChild(addedCategory);
-  if (addedCategory.value.length > 1) {
-    toggleButton.style.border = "";
-    isValidCategory = false;
-  } else {
-    toggleButton.style.border = "1px solid #14D81C";
-    isValidCategory = true;
-  }
-  if (localStorage.getItem("category")) {
-    toggleButton.textContent = localStorage.getItem("category");
-  }
-  toggleButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.setItem("category", toggleButton.textContent);
-  });
+titleInput.addEventListener("input", function () {
+  validateTitleInputAndStyle();
+  localStorage.setItem("title", titleInput.value);
   updateSubmitButtonColor();
-}
+});
+
+describe.addEventListener("input", () => {
+  validateDescribeInputAndStyle();
+  localStorage.setItem("describe", describe.value);
+  updateSubmitButtonColor();
+});
+
+dateInput.addEventListener("input", () => {
+  validateDateInputAndStyle();
+  localStorage.setItem("date", dateInput.value);
+  updateSubmitButtonColor();
+});
+
+emailInput.addEventListener("input", () => {
+  validateEmailInputAndStyle();
+  localStorage.setItem("email", emailInput.value);
+  updateSubmitButtonColor();
+});
 
 function updateSubmitButtonColor() {
   if (
-    isValidAuthor &&
+    isValidAuthor === true &&
     isValidTitle &&
     isValidDescr &&
     isValidCategory &&
@@ -273,3 +238,131 @@ function updateSubmitButtonColor() {
   }
   console.log(isValidDate, isValidCategory);
 }
+updateSubmitButtonColor();
+
+// buttons
+async function buttons() {
+  const response = await fetch(
+    `https://george.pythonanywhere.com/api/categories/ `,
+    {
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = await response.json();
+  console.log(data);
+  const categoryButtonsContainer = document.getElementById(
+    "categoryButtonsContainer"
+  );
+  const bottomDiv = document.getElementById("bottomDiv");
+
+  function toggleDiv() {
+    bottomDiv.style.display =
+      bottomDiv.style.display === "none" ? "flex" : "none";
+  }
+  bottomDiv.style.flexWrap = "wrap";
+
+  //
+  function addCategoryToToggle(categoryObj) {
+    const addedCategory = document.createElement("button");
+    addedCategory.textContent = categoryObj.title;
+    addedCategory.style.backgroundColor = categoryObj.background_color;
+    addedCategory.style.color = "white";
+    addedCategory.style.padding = "0 36px 0 12px";
+    addedCategory.style.borderRadius = " 12px";
+    addedCategory.style.height = "32px";
+    arrForBtn.push(localStorage.getItem("category"));
+    console.log(localStorage.getItem("category"));
+    //delete functionality
+    const deleteButton = document.createElement("span");
+    deleteButton.innerHTML = "X";
+    deleteButton.style.cursor = "pointer";
+    deleteButton.style.position = "relative";
+    deleteButton.style.left = "20px";
+
+    addedCategory.appendChild(deleteButton);
+
+    toggleButton.appendChild(addedCategory);
+
+    localStorage.setItem("category", toggleButton.innerHTML);
+
+    deleteButton.onclick = function () {
+      toggleButton.removeChild(addedCategory);
+      // Step 1: Retrieve the object from localStorage
+      let storedObject = JSON.parse(localStorage.getItem("category")) || {};
+
+      // Step 2: Get the keys of the object
+      let objectKeys = Object.keys(storedObject);
+      console.log(objectKeys);
+      // Step 3: Check if the object has properties before removing the last one
+      if (objectKeys.length > 0) {
+        // Step 4: Remove the last property from the object
+        let lastKey = objectKeys.pop();
+        delete storedObject[lastKey];
+
+        // Step 5: Update localStorage with the modified object
+        localStorage.setItem("category", JSON.stringify(storedObject));
+      } else {
+        console.log("The object is already empty.");
+      }
+    };
+  }
+  data.forEach((categoryObj) => {
+    const button = document.createElement("button");
+    button.textContent = categoryObj.title;
+    button.style.backgroundColor = categoryObj.background_color;
+    button.style.color = "white";
+    button.style.padding = "0 36px 0 12px";
+    button.style.borderRadius = " 12px";
+    button.style.height = "32px";
+
+    button.onclick = function () {
+      addCategoryToToggle(categoryObj);
+    };
+
+    categoryButtonsContainer.appendChild(button);
+  });
+
+  toggleButton.addEventListener("click", toggleDiv);
+}
+buttons();
+console.log(arrForBtn);
+async function uploadBlog() {
+  const blogObj = {
+    title: titleInput.value,
+    author: authorInput.value,
+    publish_date: dateInput.value,
+    description: describe.value,
+    image: localStorage.getItem("imageLink"),
+    categories: arrForBtn,
+
+    email: emailInput.value,
+  };
+  console.log(blogObj.image);
+
+  const response = await fetch(
+    "https://george.pythonanywhere.com/api/blogs/create/",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(blogObj),
+    }
+  );
+  console.log(localStorage.getItem("token"));
+  if (!response.ok) {
+    const error = await response.json();
+    console.log("Error", error);
+    return;
+  }
+  const data = await response.json();
+  console.log(data);
+}
+
+submit.addEventListener("click", () => {
+  uploadBlog();
+});
